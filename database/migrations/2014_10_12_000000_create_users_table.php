@@ -15,10 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->string('nama');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('image')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->integer('is_login');
             $table->string('password');
+            // $table->rememberToken();
+            $table->foreignId('current_team_id')->nullable();
+            $table->string('profile_photo_path', 2048)->nullable();
             $table->enum('role', ['user', 'admin']);
             $table->timestamps();
         });
